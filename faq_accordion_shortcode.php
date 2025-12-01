@@ -14,23 +14,23 @@ function faq_manage_assets() {
     global $post;
 
     wp_register_style(
-        'ssa-style', 
+        'faq-style', 
         plugin_dir_url(__FILE__) . 'assets/style.css', 
         array(), 
         '1.2'
     );
 
     wp_register_script(
-        'ssa-script', 
+        'faq-script', 
         plugin_dir_url(__FILE__) . 'assets/script.js', 
         array(), 
         '1.2', 
         true // Load in footer
     );
 
-    if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'accordion' ) ) {
-        wp_enqueue_style('ssa-style');
-        wp_enqueue_script('ssa-script');
+    if (is_a($post, 'WP_Post') && (has_shortcode($post->post_content, 'faq') || has_shortcode($post->post_content, 'faq_item'))) {
+        wp_enqueue_style('faq-style');
+        wp_enqueue_script('faq-script');
     }
 }
 add_action('wp_enqueue_scripts', 'faq_manage_assets');
@@ -39,7 +39,7 @@ add_action('wp_enqueue_scripts', 'faq_manage_assets');
 function faq_accordion_wrapper_shortcode($atts, $content = null) {
     return '<div class="faq-accordion-container" itemscope itemtype="https://schema.org/FAQPage">' . trim(do_shortcode(shortcode_unautop($content))) . '</div>';
 }
-add_shortcode('accordion', 'faq_accordion_wrapper_shortcode');
+add_shortcode('faq', 'faq_accordion_wrapper_shortcode');
 
 
 function faq_accordion_item_shortcode($atts, $content = null) {
@@ -57,4 +57,4 @@ function faq_accordion_item_shortcode($atts, $content = null) {
 
     return $html;
 }
-add_shortcode('accordion_item', 'faq_accordion_item_shortcode');
+add_shortcode('faq_item', 'faq_accordion_item_shortcode');
