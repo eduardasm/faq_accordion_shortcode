@@ -1,0 +1,33 @@
+/* Container */
+.faq-accordion-container {
+}
+
+.faq-accordion-item {
+}
+
+.faq-accordion-item-title {
+    cursor: pointer;
+}
+.faq-accordion-item {
+
+}
+.faq-accordion-item-title:hover, 
+.faq-accordion-item-title.active {
+}
+.faq-accordion-item-title:after {
+    content: '\002B';
+    color: Inherit;
+    float: right;
+    margin-left: 5px;
+}
+.faq-accordion-item-title.active:after {
+    content: '\2212';
+}
+.faq-accordion-item-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+.faq-accordion-item-content.active {
+    margin-bottom: 15px;
+}
