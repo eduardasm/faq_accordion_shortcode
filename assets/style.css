@@ -1,15 +1,10 @@
 /* Container */
 .faq-accordion-container {
 }
-
 .faq-accordion-item {
 }
-
 .faq-accordion-item-title {
     cursor: pointer;
-}
-.faq-accordion-item {
-
 }
 .faq-accordion-item-title:hover, 
 .faq-accordion-item-title.active {
